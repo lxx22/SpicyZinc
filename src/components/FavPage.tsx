@@ -10,14 +10,14 @@ import { Link } from "react-router-dom";
 const EpisodeList = lazy<any>(() => import('./EpisodeList'))
 
 export default function FavPage(): JSX.Element {
-  const { state, dispatch } = React.useContext(StoreContext)
+    const { state, dispatch } = React.useContext(StoreContext);
 
-  const props: EpisodeProps = {
-    episodes: state.favourites,
-    store: { state, dispatch },
-    toggleFavAction,
-    favourites: state.favourites
-  }
+    const props: EpisodeProps = {
+        episodes: state.favourites,
+        store: { state, dispatch },
+        toggleFavAction,
+        favourites: state.favourites
+    }
 
   return (
     <>
