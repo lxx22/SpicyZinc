@@ -10,6 +10,8 @@ import HomePage from './HomePage';
 
 import '../style/index.css';
 
+import "../style/sidenav.css";
+
 ReactDom.render(
         <StoreProvider>
             <BrowserRouter>

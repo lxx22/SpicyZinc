@@ -20,17 +20,30 @@ export interface Episode {
   url: string
 }
 
+
+export interface Show {
+    episodes: Episode[];
+    favourites: Episode[];
+}
+
+export interface Counter {
+    count: number;
+}
+
+export type Another = Record<string, any>;
+
+
 export interface State {
-  episodes: Episode[]
-  favourites: Episode[]
+    show: Show;
+    counter: Counter;
+    another: Another
 }
 
 export interface Action {
-  type: string
-  payload: Episode[]
+    type: string
+    payload: any
 }
 
-export type Dispatch = React.Dispatch<Action>
 
 export type FavAction = (
   state: State,
@@ -38,14 +51,18 @@ export type FavAction = (
   episode: Episode
 ) => void
 
-export interface Store {
-    state: State;
-    dispatch: Dispatch;
-}
 
 export interface EpisodeProps {
   episodes: Episode[]
   store: Store;
   favourites?: Episode[]
   toggleFavAction?: FavAction
+}
+
+
+export type Dispatch = React.Dispatch<Action>
+
+export interface Store {
+    state: State;
+    dispatch?: Dispatch;
 }

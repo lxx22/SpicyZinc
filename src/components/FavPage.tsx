@@ -13,10 +13,10 @@ export default function FavPage(): JSX.Element {
     const { state, dispatch } = React.useContext(StoreContext);
 
     const props: EpisodeProps = {
-        episodes: state.favourites,
+        episodes: state.show.favourites,
         store: { state, dispatch },
         toggleFavAction,
-        favourites: state.favourites
+        favourites: state.show.favourites
     }
 
   return (

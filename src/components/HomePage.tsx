@@ -11,21 +11,21 @@ const HomePage = (): JSX.Element => {
     const {state, dispatch} = React.useContext(StoreContext);
 
     useEffect(() => {
-        if (state.episodes.length === 0) {
+        if (state.show.episodes.length === 0) {
             fetchDataAction(dispatch);
         }
     }, []);
 
     const props: EpisodeProps = {
-        episodes: state.episodes,
+        episodes: state.show.episodes,
         store: { state, dispatch },
         toggleFavAction,
-        favourites: state.favourites
+        favourites: state.show.favourites
     };
 
     return (
         <>
-        <div>
+            <div>
                 <nav className="navbar navbar-light">
                     <ul className="nav navbar-nav">
                         <li>
@@ -33,6 +33,9 @@ const HomePage = (): JSX.Element => {
                         </li>
                         <li>
                             <Link to="/fav">Favorites</Link>
+                        </li>
+                        <li>
+                            <Link to="/counter">Counter</Link>
                         </li>
                     </ul>
                 </nav>
