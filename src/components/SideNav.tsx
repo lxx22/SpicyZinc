@@ -11,22 +11,22 @@ export interface SideNavProp {
     children: JSX.Element;
 }
 
-const SideNav = (props: SideNavProp) => {
-    const {sections} = props;
+const SideNav = (props: SideNavProp): React.ReactElement => {
+    const { sections } = props;
 
     const [stylingConfig, setStylingConfig] = React.useState({
         sideNavWidth: "0px",
         mainMarginLeft: "0px",
-        bgColor: ""
+        bgColor: "",
     });
 
     const [sideNavOpen, setSideNavOpen] = React.useState(false);
 
-    const closeHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const closeHandler = () => {
         setStylingConfig({
             sideNavWidth: "0px",
             mainMarginLeft: "0px",
-            bgColor: "beige"
+            bgColor: "beige",
         });
         setSideNavOpen(false);
     };
@@ -36,41 +36,39 @@ const SideNav = (props: SideNavProp) => {
         setStylingConfig({
             sideNavWidth: "250px",
             mainMarginLeft: "250px",
-            bgColor: "rgba(0,0,0,0.4)"
+            bgColor: "rgba(0,0,0,0.4)",
         });
         setSideNavOpen(true);
     };
 
-    const escapeHandler = (event: React.MouseEvent<HTMLInputElement>) => {
+    const escapeHandler = () => {
         if (sideNavOpen) {
             setSideNavOpen(false);
 
             setStylingConfig({
                 sideNavWidth: "0px",
                 mainMarginLeft: "0px",
-                bgColor: "beige"
+                bgColor: "beige",
             });
         }
     };
 
     return (
         <>
-            <div className="sidenav" style={{width : stylingConfig.sideNavWidth}}>
-                <a className="closebtn" onClick={closeHandler}>&times;</a>
-                {
-                    sections.map(({id, name, href}) => {
-                        return (
-                            <a key={id} href={href}>
-                                {name}
-                            </a>
-                        )
-                    })
-                }
+            <div className="sidenav" style={{ width: stylingConfig.sideNavWidth }}>
+                <a className="closebtn" onClick={closeHandler}>
+                    &times;
+                </a>
+                {sections.map(({ id, name, href }) => (
+                    <a key={id} href={href}>
+                        {name}
+                    </a>
+                ))}
             </div>
 
             <div
                 id="main"
-                style={{marginLeft : stylingConfig.mainMarginLeft, backgroundColor: stylingConfig.bgColor}}
+                style={{ marginLeft: stylingConfig.mainMarginLeft, backgroundColor: stylingConfig.bgColor }}
                 onClick={escapeHandler}
             >
                 <span onClick={openNav}>&#9776;</span>

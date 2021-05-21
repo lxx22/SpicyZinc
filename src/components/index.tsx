@@ -1,22 +1,19 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 
-import { StoreProvider } from '../Store';
-
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import { StoreProvider } from "../Store";
 
 import { App } from "./App";
-import HomePage from './HomePage';
 
-import '../style/index.css';
-
+import "../style/index.css";
 import "../style/sidenav.css";
 
 ReactDom.render(
-        <StoreProvider>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </StoreProvider>,
-    document.querySelector("#app")
+    <StoreProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </StoreProvider>,
+    document.querySelector("#app"),
 );
